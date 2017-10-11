@@ -1,0 +1,1 @@
+cmd_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalfifo.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalfifo.ko /home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalfifo.o /home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalfifo.mod.o ;  true
