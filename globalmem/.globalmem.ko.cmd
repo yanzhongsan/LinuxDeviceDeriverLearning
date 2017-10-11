@@ -1,0 +1,1 @@
+cmd_/home/yanzhongsan/DevicesDerverLearning/globalmem/globalmem.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/yanzhongsan/DevicesDerverLearning/globalmem/globalmem.ko /home/yanzhongsan/DevicesDerverLearning/globalmem/globalmem.o /home/yanzhongsan/DevicesDerverLearning/globalmem/globalmem.mod.o ;  true
