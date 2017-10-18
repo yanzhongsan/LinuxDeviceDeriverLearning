@@ -13,6 +13,7 @@
 #include <linux/slab.h>
 #include <linux/uaccess.h>
 #include <linux/device.h>
+#include <linux/poll.h>
 
 #define GLOBALFIFO_SIZE			0x1000  /*全局内存大小，用于模拟读写操作的内存区域*/
 #define MEM_CLEAR				0x1     /*ioctl操作命令                      */
@@ -29,9 +30,19 @@ struct globalfifo_dev {
     struct mutex mutex;                 /*用于多用户(进程)访问时的控制，不能用自旋锁，因为读写操作中有调用可能导致阻塞的copy_to_user及copy_from_user; 只能使用互斥体*/
     wait_queue_head_t r_wait;           /*定义读取等待队列头部*/
     wait_queue_head_t w_wait;           /*定义写入等待队列头部*/
+    struct fasync_struct *async_queue;  /*异步通知*/
 };
 
 static struct globalfifo_dev *globalfifo_devp;
+
+/*
+ *处理FASYNC标志变更的函数
+ */
+static int globalfifo_fasync(int fd, struct file *filp, int mode)
+{
+    struct globalfifo_dev *dev = filp->private_data;
+    return fasync_helper(fd, filp, mode, &dev->async_queue);
+}
 
 /*
  *文件打开函数，对应于用户空间的open函数，用户空间调用open函数时，系统内部经过各种处理后，最终调用本函数
@@ -54,15 +65,16 @@ static int globalfifo_open(struct inode *inode, struct file *filep)
  *2.内核自动关闭 
  *  内核在进程退出时，会在内部使用close()系统调用自动关闭所有相关文件 
  */
-static int globalfifo_release(struct inode *inode, struct file *filep)
+static int globalfifo_release(struct inode *inode, struct file *filp)
 {
+    globalfifo_fasync(-1, filp, 0);
 	return 0;
 }
 
 /*
  *ioctl设备控制函数
  */
-static long golbalfifo_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
+static long globalfifo_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 {
 	struct globalfifo_dev *dev = filep->private_data;
 
@@ -71,6 +83,7 @@ static long golbalfifo_ioctl(struct file *filep, unsigned int cmd, unsigned long
         mutex_lock(&dev->mutex);
 
 		memset(dev->mem, 0, GLOBALFIFO_SIZE);
+        dev->current_len = 0;
 		printk(KERN_INFO "globalfifo is set to zero\n");
 
         mutex_unlock(&dev->mutex);
@@ -129,6 +142,11 @@ static ssize_t globalfifo_read(struct file *filp, char __user * buf, size_t coun
 
         wake_up_interruptible(&dev->w_wait);    /*读取数据后，FIFO中会空闲部分空间，唤醒写等待的进程，允许写入*/
 
+        if (dev->async_queue) {
+            kill_fasync(&dev->async_queue, SIGIO, POLL_OUT);
+            printk(KERN_DEBUG "%s kill SIGIO POLL_OUT: %d\n", __func__, POLL_OUT);
+        }
+        
         ret = count;
     }
 out:
@@ -182,6 +200,13 @@ static ssize_t globalfifo_write(struct file *filp, const char __user *buf, size_
 
         wake_up_interruptible(&dev->r_wait);
 
+        if (dev->async_queue) {
+            kill_fasync(&dev->async_queue, SIGIO, POLL_IN);
+            printk(KERN_DEBUG "%s kill SIGIO POLL_IN: %d\n", __func__, POLL_IN);
+        } else {
+            printk(KERN_DEBUG "%s kill SIGIO failure.\n", __func__);
+        }
+        
         ret = count;
     }
 out:
@@ -232,6 +257,32 @@ static loff_t globalfifo_llseek(struct file *filep, loff_t offset, int orig)
 }
 
 /*
+ *轮询
+ */
+static unsigned int globalfifo_poll(struct file *filp, poll_table *wait)
+{
+    unsigned int mask = 0;
+    struct globalfifo_dev *dev = filp->private_data;
+
+    mutex_lock(&dev->mutex);
+
+    poll_wait(filp, &dev->r_wait, wait);
+    poll_wait(filp, &dev->w_wait, wait);
+
+    if (0 != dev->current_len) {
+        mask |= POLLIN | POLLRDNORM;
+    }
+
+    if (GLOBALFIFO_SIZE != dev->current_len) {
+        mask |= POLLOUT | POLLWRNORM;
+    }
+
+    mutex_unlock(&dev->mutex);
+
+    return mask;
+}
+
+/*
  *文件操作的结构体
  */
 static const struct file_operations globalfifo_fops = {
@@ -239,7 +290,9 @@ static const struct file_operations globalfifo_fops = {
     .llseek         = globalfifo_llseek,
     .read           = globalfifo_read,
     .write          = globalfifo_write,
-    .unlocked_ioctl = golbalfifo_ioctl,
+    .unlocked_ioctl = globalfifo_ioctl,
+    .poll           = globalfifo_poll,
+    .fasync         = globalfifo_fasync,
     .open           = globalfifo_open,
     .release        = globalfifo_release,
 };

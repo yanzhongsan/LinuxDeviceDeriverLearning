@@ -847,6 +847,10 @@ deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalfifo.o := \
     $(wildcard include/config/amd/iommu.h) \
     $(wildcard include/config/pci/domains.h) \
   include/linux/pm_wakeup.h \
+  include/linux/poll.h \
+  include/uapi/linux/poll.h \
+  arch/x86/include/uapi/asm/poll.h \
+  include/uapi/asm-generic/poll.h \
 
 /home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalfifo.o: $(deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalfifo.o)
 

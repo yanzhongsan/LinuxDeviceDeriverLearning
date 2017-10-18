@@ -157,6 +157,8 @@
         </Folder>
         <Folder Name="../test">
             <F N="../test/app.c"/>
+            <F N="../test/globalfifo_epoll.c"/>
+            <F N="../test/globalfifo_poll.c"/>
             <F
                 N="../test/Makefile"
                 Type="Makefile"/>
