@@ -1,5 +1,6 @@
 ﻿PWD = $(shell pwd)
-KERNEL_SRC = /usr/src/linux-headers-4.10.0-36-generic/
+KVER = $(shell uname -r)
+KERNEL_SRC = /usr/src/linux-headers-$(KVER)/
 
 obj-m := globalmem.o
 module-objs := globalmem.o
@@ -9,5 +10,4 @@ all:
 
 
 clean:
-	rm *.ko
-	rm *.o
+	rm -rf .*.cmd *.o *.mod.c *.ko .tmp_versions

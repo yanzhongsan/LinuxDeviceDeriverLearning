@@ -1,0 +1,5 @@
+1.插入驱动模块时提示：device or resource busy
+	一般是驱动的设备号已经被系统使用了，可以使用：cat /proc/devices来查看系统设备列表，
+	确认设备号是否被占用
+2.插入驱动模块时提示：Invalid module format
+	可能的原因是引用的内核头文件和实际运行的内核不一致所致

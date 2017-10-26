@@ -1,3 +1,3 @@
-/home/yanzhongsan/DevicesDerverLearning/globalmem/globalmem.ko
-/home/yanzhongsan/DevicesDerverLearning/globalmem/globalmem.o
+/home/yanzhongsan/LinuxDeviceDeriverLearning/globalmem/globalmem.ko
+/home/yanzhongsan/LinuxDeviceDeriverLearning/globalmem/globalmem.o
 

@@ -1,8 +1,8 @@
-cmd_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o := gcc -Wp,-MD,/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/.globalmem.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/5/include  -I./arch/x86/include -I./arch/x86/include/generated/uapi -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -Iubuntu/include  -D__KERNEL__ -fno-pie -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-pie -no-pie -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -maccumulate-outgoing-args -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types  -DMODULE  -DKBUILD_BASENAME='"globalmem"'  -DKBUILD_MODNAME='"globalmem"' -c -o /home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o /home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.c
+cmd_/home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.o := gcc -Wp,-MD,/home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/.second.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/5/include  -I./arch/x86/include -I./arch/x86/include/generated/uapi -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -Iubuntu/include  -D__KERNEL__ -fno-pie -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-pie -no-pie -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -maccumulate-outgoing-args -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types  -DMODULE  -DKBUILD_BASENAME='"second"'  -DKBUILD_MODNAME='"second"' -c -o /home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.o /home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.c
 
-source_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o := /home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.c
+source_/home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.o := /home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.c
 
-deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o := \
+deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.o := \
   include/linux/module.h \
     $(wildcard include/config/modules.h) \
     $(wildcard include/config/sysfs.h) \
@@ -669,6 +669,52 @@ deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o := \
   include/uapi/linux/fcntl.h \
   arch/x86/include/uapi/asm/fcntl.h \
   include/uapi/asm-generic/fcntl.h \
+  include/linux/mm.h \
+    $(wildcard include/config/have/arch/mmap/rnd/bits.h) \
+    $(wildcard include/config/have/arch/mmap/rnd/compat/bits.h) \
+    $(wildcard include/config/arch/uses/high/vma/flags.h) \
+    $(wildcard include/config/ppc.h) \
+    $(wildcard include/config/parisc.h) \
+    $(wildcard include/config/metag.h) \
+    $(wildcard include/config/stack/growsup.h) \
+    $(wildcard include/config/shmem.h) \
+    $(wildcard include/config/debug/vm/rb.h) \
+    $(wildcard include/config/page/poisoning.h) \
+    $(wildcard include/config/debug/pagealloc.h) \
+    $(wildcard include/config/hugetlbfs.h) \
+  include/linux/percpu-refcount.h \
+  include/linux/resource.h \
+  include/uapi/linux/resource.h \
+  arch/x86/include/uapi/asm/resource.h \
+  include/asm-generic/resource.h \
+  include/uapi/asm-generic/resource.h \
+  include/linux/page_ext.h \
+    $(wildcard include/config/idle/page/tracking.h) \
+  include/linux/stacktrace.h \
+    $(wildcard include/config/stacktrace.h) \
+    $(wildcard include/config/user/stacktrace/support.h) \
+  include/linux/stackdepot.h \
+  include/linux/page_ref.h \
+    $(wildcard include/config/debug/page/ref.h) \
+  include/linux/page-flags.h \
+    $(wildcard include/config/arch/uses/pg/uncached.h) \
+    $(wildcard include/config/memory/failure.h) \
+    $(wildcard include/config/swap.h) \
+    $(wildcard include/config/ksm.h) \
+  arch/x86/include/asm/pgtable.h \
+    $(wildcard include/config/debug/wx.h) \
+    $(wildcard include/config/have/arch/soft/dirty.h) \
+  arch/x86/include/asm/pgtable_64.h \
+  include/asm-generic/pgtable.h \
+    $(wildcard include/config/have/arch/huge/vmap.h) \
+  include/linux/huge_mm.h \
+  include/linux/vmstat.h \
+    $(wildcard include/config/vm/event/counters.h) \
+    $(wildcard include/config/debug/tlbflush.h) \
+    $(wildcard include/config/debug/vm/vmacache.h) \
+  include/linux/vm_event_item.h \
+    $(wildcard include/config/memory/balloon.h) \
+    $(wildcard include/config/balloon/compaction.h) \
   include/linux/cdev.h \
   include/linux/slab.h \
     $(wildcard include/config/debug/slab.h) \
@@ -725,7 +771,6 @@ deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o := \
     $(wildcard include/config/arch/wants/dynamic/task/struct.h) \
     $(wildcard include/config/have/unstable/sched/clock.h) \
     $(wildcard include/config/irq/time/accounting.h) \
-    $(wildcard include/config/stack/growsup.h) \
     $(wildcard include/config/have/copy/thread/tls.h) \
     $(wildcard include/config/have/exit/thread.h) \
     $(wildcard include/config/cpu/freq.h) \
@@ -776,11 +821,6 @@ deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o := \
   include/uapi/linux/unistd.h \
   include/linux/rtmutex.h \
     $(wildcard include/config/debug/rt/mutexes.h) \
-  include/linux/resource.h \
-  include/uapi/linux/resource.h \
-  arch/x86/include/uapi/asm/resource.h \
-  include/asm-generic/resource.h \
-  include/uapi/asm-generic/resource.h \
   include/linux/hrtimer.h \
     $(wildcard include/config/high/res/timers.h) \
     $(wildcard include/config/time/low/res.h) \
@@ -801,7 +841,6 @@ deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o := \
   include/uapi/linux/magic.h \
   include/linux/cgroup-defs.h \
     $(wildcard include/config/sock/cgroup/data.h) \
-  include/linux/percpu-refcount.h \
   include/linux/bpf-cgroup.h \
     $(wildcard include/config/cgroup/bpf.h) \
   include/uapi/linux/bpf.h \
@@ -848,6 +887,6 @@ deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o := \
     $(wildcard include/config/pci/domains.h) \
   include/linux/pm_wakeup.h \
 
-/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o: $(deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o)
+/home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.o: $(deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.o)
 
-$(deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o):
+$(deps_/home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.o):

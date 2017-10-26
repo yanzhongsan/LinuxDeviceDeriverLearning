@@ -2,8 +2,8 @@
 KVER = $(shell uname -r)
 KERNEL_SRC = /usr/src/linux-headers-$(KVER)/
 
-obj-m := globalfifo.o
-module-objs := globalfifo.o
+obj-m := second.o
+module-objs := second.o
 
 all:
 	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) modules

@@ -1,0 +1,1 @@
+cmd_/home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.ko /home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.o /home/yanzhongsan/LinuxDeviceDeriverLearning/second/src/second.mod.o ;  true

@@ -1,1 +1,0 @@
-cmd_/home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.ko /home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.o /home/yanzhongsan/LinuxDeviceDeriverLearning/globalfifo/globalmem.mod.o ;  true
